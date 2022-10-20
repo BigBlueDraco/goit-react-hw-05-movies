@@ -1,16 +1,25 @@
+import { HomePage } from 'pages/HomePage/HomePage';
+import { MovieDetailsPage } from 'pages/MovieDetailsPage/MovieDetailsPage';
+import { MoviesPage } from 'pages/MoviesPage/MoviesPage';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+// import { HomePage } from 'pages/HomePage';
+// import { MovieDetailsPage } from 'pages/MovieDetailsPage/MovieDetailsPage';
+// import { MoviesPage } from 'pages/MoviesPage/MoviesPage';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="home" element={<HomePage />} />
+          <Route path="movies" element={<MoviesPage />} />
+          <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" />
+            <Route path="reviews" />
+          </Route>
+        </Route>
+      </Routes>
+    </>
   );
 };
