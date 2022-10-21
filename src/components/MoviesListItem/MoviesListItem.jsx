@@ -1,3 +1,3 @@
-export const MoviesListItem = () => {
-  return <li></li>;
+export const MoviesListItem = ({ title }) => {
+  return <li>{title}</li>;
 };

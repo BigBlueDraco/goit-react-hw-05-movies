@@ -4,7 +4,7 @@ export const HomePage = () => {
     <>
       <span>Home</span>
       <h1>Trending Today</h1>
-      <MoviesList />
+      <MoviesList movies={[{ title: 'rat' }]} />
     </>
   );
 };
