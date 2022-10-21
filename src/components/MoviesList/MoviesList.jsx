@@ -5,7 +5,7 @@ export const MoviesList = ({ movies }) => {
     <ul>
       {movies &&
         movies.map(({ id, title }) => (
-          <MoviesListItem key={id} title={title} />
+          <MoviesListItem key={id} title={title} id={id} />
         ))}
     </ul>
   );
