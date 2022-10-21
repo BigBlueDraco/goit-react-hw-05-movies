@@ -11,6 +11,7 @@ export class moviesApi {
         query,
       },
     });
+    console.log(data);
     return data;
   }
   static async fetchTrendingMoviesToday() {
@@ -22,6 +23,7 @@ export class moviesApi {
         },
       }
     );
+    console.log(data);
     return data;
   }
 }
