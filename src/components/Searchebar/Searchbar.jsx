@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const Searchbar = ({ handleSubmit }) => {
   const [query, setQuerry] = useState();
