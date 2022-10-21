@@ -35,6 +35,7 @@ export class moviesApi {
         },
       }
     );
+    console.log(data);
     return data;
   }
 }

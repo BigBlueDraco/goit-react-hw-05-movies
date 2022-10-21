@@ -20,6 +20,8 @@ export const Searchbar = ({ handleSubmit }) => {
           }}
         />
       </label>
+
+      <button type="submit">Submit</button>
     </form>
   );
 };
