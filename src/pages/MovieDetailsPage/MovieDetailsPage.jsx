@@ -52,8 +52,12 @@ export const MovieDetailsPage = () => {
           </div>
           <div>
             <p>Additional information</p>
-            <Link to="cast">Cast</Link>
-            <Link to="reviews">Reviews</Link>
+            <Link to="cast" state={location.state}>
+              Cast
+            </Link>
+            <Link to="reviews" state={location.state}>
+              Reviews
+            </Link>
           </div>
           <Outlet />
         </>
