@@ -1,26 +1,12 @@
-import { useEffect } from 'react';
-import { useCallback } from 'react';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { moviesApi } from 'services/moviesAPI';
+import { useFetchMovie } from 'hooks/useFetchMovie';
 
 export default function ReviewsPage() {
-  const { movieId } = useParams();
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-  const fetchMovies = async () => {
-    const resp = await moviesApi.fetchMoviesById(movieId, 'reviews');
-    console.log(resp);
-    setReviews(resp.results);
-  };
+  const reviews = useFetchMovie('reviews');
 
   return (
     <ul>
-      {reviews[0]
-        ? fetchMovies().map(({ id, author, content }) => (
+      {reviews && reviews.results[0]
+        ? reviews.results.map(({ id, author, content }) => (
             <li key={id}>
               <p>{author}</p>
               <p>{content}</p>

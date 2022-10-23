@@ -1,22 +1,12 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { moviesApi } from 'services/moviesAPI';
+import { useFetchMovie } from 'hooks/useFetchMovie';
 
 export default function CastPage() {
-  const { movieId } = useParams();
-  const [cast, setCast] = useState([]);
-  useEffect(() => {
-    fetchMovies();
-  });
-  const fetchMovies = async () => {
-    const resp = await moviesApi.fetchMoviesById(movieId, 'credits');
-    setCast(resp.cast);
-  };
+  const cast = useFetchMovie('credits');
+
   return (
     <ul>
       {cast &&
-        cast.map(({ id, original_name, character, profile_path }) => (
+        cast.cast.map(({ id, original_name, character, profile_path }) => (
           <li key={id}>
             <img
               width="120px"

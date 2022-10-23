@@ -1,35 +1,14 @@
 import { useFetchMovie } from 'hooks/useFetchMovie';
-import { Suspense, useEffect } from 'react';
-import { useState } from 'react';
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
-import { moviesApi } from 'services/moviesAPI';
+import { Suspense } from 'react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 export default function MovieDetailsPage() {
   const movie = useFetchMovie();
-  const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const { pathname, search } = location.state
     ? location.state.from
     : { pathname: '/index', search: '' };
-  // useEffect(() => {
-  //   fetchMovies();
-  // });
-  // const fetchMovies = async () => {
-  //   try {
-  //     const resp = await moviesApi.fetchMoviesById(movieId);
-  //     setMovie(resp);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // const { title, vote_average, overview, genres, poster_path } = movie;
   return (
     <>
       {movie ? (
