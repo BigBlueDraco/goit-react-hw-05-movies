@@ -14,7 +14,9 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const { pathname, search } = location.state.from;
+  const { pathname, search } = location.state
+    ? location.state.from
+    : { pathname: '/index', search: '' };
   useEffect(() => {
     fetchMovies();
   });
@@ -29,7 +31,7 @@ export default function MovieDetailsPage() {
   const { title, vote_average, overview, genres, poster_path } = movie;
   return (
     <>
-      {movie && (
+      {movie ? (
         <>
           <button onClick={() => navigate(pathname + search)}>Go back</button>
           <div>
@@ -52,10 +54,10 @@ export default function MovieDetailsPage() {
           </div>
           <div>
             <p>Additional information</p>
-            <Link to="cast" state={location.state}>
+            <Link to="cast" state={location.state ?? ''}>
               Cast
             </Link>
-            <Link to="reviews" state={location.state}>
+            <Link to="reviews" state={location.state ?? ''}>
               Reviews
             </Link>
           </div>
@@ -63,6 +65,8 @@ export default function MovieDetailsPage() {
             <Outlet />
           </Suspense>
         </>
+      ) : (
+        <div>No data</div>
       )}
     </>
   );
