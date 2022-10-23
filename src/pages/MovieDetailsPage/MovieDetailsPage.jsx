@@ -1,26 +1,37 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { moviesApi } from 'services/moviesAPI';
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState([]);
   const { movieId } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { pathname, search } = location.state.from;
   useEffect(() => {
     fetchMovies();
-    console.log(movie);
   }, []);
   const fetchMovies = async () => {
-    const resp = await moviesApi.fetchMoviesById(movieId);
-    setMovie(resp);
+    try {
+      const resp = await moviesApi.fetchMoviesById(movieId);
+      setMovie(resp);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const { title, vote_average, overview, genres, poster_path } = movie;
-  //   console.log(genres);
   return (
     <>
       {movie && (
         <>
-          <button></button>
+          <button onClick={() => navigate(pathname + search)}>Go back</button>
           <div>
             <img
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}

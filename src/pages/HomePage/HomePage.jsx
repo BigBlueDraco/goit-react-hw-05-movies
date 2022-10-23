@@ -13,7 +13,6 @@ export const HomePage = () => {
   };
   return (
     <>
-      <span>Home</span>
       <h1>Trending Today</h1>
       <MoviesList movies={movies} />
     </>

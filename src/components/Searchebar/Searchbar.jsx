@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 export const Searchbar = ({ handleSubmit }) => {
   const [query, setQuerry] = useState();
@@ -7,11 +6,11 @@ export const Searchbar = ({ handleSubmit }) => {
     <form
       action=""
       onSubmit={e => {
-        // e.preventDefault();
         handleSubmit(query);
       }}
     >
-      <label htmlFor="">
+      <label>
+        Searche movie
         <input
           type="text"
           name="query"

@@ -10,6 +10,7 @@ export const MoviesListItem = ({ title, id: movieId }) => {
             ? `${movieId}`
             : `movies/${movieId}`
         }
+        state={{ from: location }}
       >
         {title}
       </Link>

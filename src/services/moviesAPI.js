@@ -26,16 +26,16 @@ export class moviesApi {
     );
     return data;
   }
-  static async fetchMoviesById(id) {
+  static async fetchMoviesById(id, endpointOption = '') {
+    const endpoint = endpointOption ? '/' + endpointOption : '';
     const { data } = await axios.get(
-      `${this.baseUrl}${this.movieEndPoint}/${id}`,
+      `${this.baseUrl}${this.movieEndPoint}/${id}${endpoint}`,
       {
         params: {
           api_key: 'fd0a7baec7e1722e7549dfbeea65227f',
         },
       }
     );
-    console.log(data);
     return data;
   }
 }
