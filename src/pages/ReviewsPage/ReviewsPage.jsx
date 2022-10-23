@@ -5,10 +5,13 @@ import { moviesApi } from 'services/moviesAPI';
 
 export default function ReviewsPage() {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(() =>
+    moviesApi.fetchMoviesById(movieId, 'reviews')
+  );
   useEffect(() => {
+    console.log('q');
     fetchMovies();
-  });
+  }, []);
   const fetchMovies = async () => {
     const resp = await moviesApi.fetchMoviesById(movieId, 'reviews');
     setReviews(resp.results);
