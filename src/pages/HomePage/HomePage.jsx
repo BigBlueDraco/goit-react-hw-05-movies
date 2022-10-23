@@ -2,7 +2,7 @@ import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { moviesApi } from 'services/moviesAPI';
-export const HomePage = () => {
+export default function HomePage() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     fetchMovies();
@@ -17,4 +17,4 @@ export const HomePage = () => {
       <MoviesList movies={movies} />
     </>
   );
-};
+}

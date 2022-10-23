@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useState } from 'react';
 import {
   Link,
@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import { moviesApi } from 'services/moviesAPI';
 
-export const MovieDetailsPage = () => {
+export default function MovieDetailsPage() {
   const [movie, setMovie] = useState([]);
   const { movieId } = useParams();
   const location = useLocation();
@@ -59,9 +59,11 @@ export const MovieDetailsPage = () => {
               Reviews
             </Link>
           </div>
-          <Outlet />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </>
   );
-};
+}

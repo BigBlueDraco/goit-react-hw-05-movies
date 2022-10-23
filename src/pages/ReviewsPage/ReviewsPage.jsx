@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesAPI';
 
-export const ReviewsPage = () => {
+export default function ReviewsPage() {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
@@ -26,4 +26,4 @@ export const ReviewsPage = () => {
         : 'No reviews'}
     </ul>
   );
-};
+}

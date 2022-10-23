@@ -3,12 +3,11 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesAPI';
 
-export const CastPage = () => {
+export default function CastPage() {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
   useEffect(() => {
     fetchMovies();
-    console.log(cast);
   }, []);
   const fetchMovies = async () => {
     const resp = await moviesApi.fetchMoviesById(movieId, 'credits');
@@ -32,4 +31,4 @@ export const CastPage = () => {
         ))}
     </ul>
   );
-};
+}
