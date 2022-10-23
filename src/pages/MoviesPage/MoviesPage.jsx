@@ -6,7 +6,6 @@ import { useSearchParams } from 'react-router-dom';
 export default function MoviesPage() {
   const [searchParams] = useSearchParams();
   const movies = useSearchMovies(searchParams.get('query'));
-  console.log(movies);
 
   return (
     <>
