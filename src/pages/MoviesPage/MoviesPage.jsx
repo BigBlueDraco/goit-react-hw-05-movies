@@ -10,7 +10,7 @@ export default function MoviesPage() {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     fetchMovies();
-  }, []);
+  });
 
   const fetchMovies = async () => {
     try {

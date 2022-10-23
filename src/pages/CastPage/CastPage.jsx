@@ -8,7 +8,7 @@ export default function CastPage() {
   const [cast, setCast] = useState([]);
   useEffect(() => {
     fetchMovies();
-  }, []);
+  });
   const fetchMovies = async () => {
     const resp = await moviesApi.fetchMoviesById(movieId, 'credits');
     setCast(resp.cast);

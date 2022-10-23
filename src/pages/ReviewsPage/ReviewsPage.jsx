@@ -8,8 +8,7 @@ export default function ReviewsPage() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     fetchMovies();
-    console.log(reviews);
-  }, []);
+  });
   const fetchMovies = async () => {
     const resp = await moviesApi.fetchMoviesById(movieId, 'reviews');
     setReviews(resp.results);
