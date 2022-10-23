@@ -17,7 +17,7 @@ export const MovieDetailsPage = () => {
   const { pathname, search } = location.state.from;
   useEffect(() => {
     fetchMovies();
-  }, []);
+  });
   const fetchMovies = async () => {
     try {
       const resp = await moviesApi.fetchMoviesById(movieId);
