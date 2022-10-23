@@ -1,20 +1,17 @@
 import { MoviesList } from 'components/MoviesList/MoviesList';
+import { useFetchTrendingMovie } from 'hooks/useFetchTrendingMovies';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { moviesApi } from 'services/moviesAPI';
 export default function HomePage() {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-  const fetchMovies = async () => {
-    const { results } = await moviesApi.fetchTrendingMoviesToday();
-    setMovies(results);
-  };
+  const movies = useFetchTrendingMovie();
+  {
+    console.log(movies);
+  }
   return (
     <>
       <h1>Trending Today</h1>
-      <MoviesList movies={movies} />
+      {movies && <MoviesList movies={movies.results} />}
     </>
   );
 }
